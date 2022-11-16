@@ -10,3 +10,24 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.add-icon {
+  color: $red;
+  text-decoration: none;
+
+  &:hover {
+    color: $red;
+  }
+}
+
+body {
+  background-color: rgb(23, 23, 23);
+}
+
+h1, h3 {
+  color: $red;
+}
+
+form label {
+  color: white;
+}
