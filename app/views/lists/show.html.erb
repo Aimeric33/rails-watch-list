@@ -1,42 +1,41 @@
 <div class="banner-list">
-  <%= cl_image_tag @article.photo.key, height: 300, width: 100, crop: :fill %>
+  <%= cl_image_tag @list.cover_image.key, height: 300, width: 100, crop: :fill %>
 </div>
 <div class="container mt-5">
   <h1 class="mb-3"><%= @list.name %></h1>
 
-<div class="row">
-  <div class="cards col-sm-10">
-    <% @list.bookmarks.each do |bookmark| %>
-      <div class="card-product">
-        <img src="<%= bookmark.movie.poster_url %>" />
-        <div class="card-product-infos">
-          <h2><%= bookmark.movie.title %></h2>
-          <p><%= bookmark.movie.overview %></p>
-          <p><i class="fa-solid fa-quote-left"></i> <strong><%= bookmark.comment %></strong></p>
-          <p><%= link_to 'Supprimer', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+  <div class="row">
+    <div class="cards col-sm-10">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-product">
+          <img src="<%= bookmark.movie.poster_url %>" />
+          <div class="card-product-infos">
+            <h2><%= bookmark.movie.title %></h2>
+            <p><%= bookmark.movie.overview %></p>
+            <p><i class="fa-solid fa-quote-left"></i> <strong><%= bookmark.comment %></strong></p>
+            <p><%= link_to 'Supprimer', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <div class="col-sm-2">
+      <h3>Ajouter un film</h3>
+      <%= simple_form_for [@list, @bookmark],
+        wrapper: :inline_form,
+        html: { class: "row row-cols-lg-auto g-3 align-items-center" },
+        wrapper_mappings: {
+          boolean: :inline_boolean
+        } do |f| %>
+
+        <%= f.error_notification %>
+
+        <%= f.association :movie %>
+        <%= f.input :comment, label: 'Commentaire' %>
+
+        <div class="col-12">
+          <%= f.button :submit, class: "btn-light" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="col-sm-2">
-    <h3>Ajouter un film</h3>
-    <%= simple_form_for [@list, @bookmark],
-      wrapper: :inline_form,
-      html: { class: "row row-cols-lg-auto g-3 align-items-center" },
-      wrapper_mappings: {
-        boolean: :inline_boolean
-      } do |f| %>
-
-      <%= f.error_notification %>
-
-      <%= f.association :movie %>
-      <%= f.input :comment, label: 'Commentaire' %>
-
-      <div class="col-12">
-        <%= f.button :submit, class: "btn-light" %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
 </div>
