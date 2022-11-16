@@ -9,8 +9,8 @@
         <div class="card-product-infos">
           <h2><%= bookmark.movie.title %></h2>
           <p><%= bookmark.movie.overview %></p>
-          <p><i class="fa-solid fa-quote-left"></i> <%= bookmark.comment %></p>
-          <p><%= link_to '<i class="fa-solid fa-trash"></i>'.html_safe, bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+          <p><i class="fa-solid fa-quote-left"></i> <strong><%= bookmark.comment %></strong></p>
+          <p><%= link_to 'Supprimer', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
         </div>
       </div>
     <% end %>
