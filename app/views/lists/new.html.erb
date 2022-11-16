@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="mt-3 mb-3">Créer une nouvelle liste</h1>
+
+  <%= simple_form_for @list do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :name %>
+
+    <%= f.button :submit, class: "btn-primary" %>
+    <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
+  <% end %>
+</div>
