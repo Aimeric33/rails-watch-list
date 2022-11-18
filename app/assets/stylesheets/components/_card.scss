@@ -1,22 +1,38 @@
-.card-category {
+.parent {
   background-size: cover;
   background-position: center;
   height: 180px;
+  border-radius: 5px;
+}
+
+.card-category {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: $red;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+
+  &:hover {
+    backdrop-filter: blur(2px);
+    transition: 0.3s ease;
+  }
+}
+
+.card-category i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .card-category a {
   text-decoration: none;
   color: $red;
-  text-shadow: 0 6px 12px rgba(0, 0, 0, 1);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 .card-product {
@@ -27,6 +43,15 @@
   display: flex;
   align-items: center;
   border-radius: 4px;
+  position: relative;
+}
+
+.card-product .bookmark-delete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: $red;
+  font-size: 16px;
 }
 
 .card-product img {
@@ -51,4 +76,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.card-comment {
+  color: $red;
+  opacity: 1;
+  margin-top: 8px;
+  font-size: 12px;
 }
